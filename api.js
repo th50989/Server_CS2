@@ -9,6 +9,8 @@ app.listen(5555, function(){
 });
 const { db } = require('./config/admin');
 
+//get Method
+//get Tat ca ten Map
 app.get("/getall", async (req, res) => {
     const cRef = db.collection('Maps');
     try {
@@ -25,8 +27,311 @@ app.get("/getall", async (req, res) => {
       res.status(500).json({ message: error });
     }
   });
+  /////---------------------------------------GET SMOKE-----------------------------------
+  /////////<------------------------------------T side -------------------------------------------
+  //get Tat ca smoke Mirage
+  app.get('/getMirageSmokeT', (req, res) => {
+    const collectionRef = db.collection('Smoke');
+    // Query the collection for documents where MapID is "Mirage" and SideID is "T"
+    const query = collectionRef.where('MapID', '==', 'Mirage').where('SideID', '==', 'T');
+    // Execute the query and retrieve the Name and videoURL fields
+    query
+      .get()
+      .then((querySnapshot) => {
+        const smokeData = [];
+        querySnapshot.forEach((doc) => {
+          const data = doc.data();
+          const name = data.Name;
+          const videoURL = data.videoURL;
+          const description = data.Description;
+          smokeData.push({ name, videoURL,description });
+        });
+        res.json(smokeData); // Send the retrieved data as a JSON response
+      })
+      .catch((error) => {
+        console.error('Error getting documents: ', error);
+        res.status(500).send('Error getting smoke data');
+      });
+  });
+  app.get('/getInfernoSmokeT', (req, res) => {
+    const collectionRef = db.collection('Smoke');
+    // Query the collection for documents where MapID is "Mirage" and SideID is "T"
+    const query = collectionRef.where('MapID', '==', 'Inferno').where('SideID', '==', 'T');
+    // Execute the query and retrieve the Name and videoURL fields
+    query
+      .get()
+      .then((querySnapshot) => {
+        const smokeData = [];
+        querySnapshot.forEach((doc) => {
+          const data = doc.data();
+          const name = data.Name;
+          const videoURL = data.videoURL;
+          const description = data.Description;
+          smokeData.push({ name, videoURL,description });
+        });
+        res.json(smokeData); // Send the retrieved data as a JSON response
+      })
+      .catch((error) => {
+        console.error('Error getting documents: ', error);
+        res.status(500).send('Error getting smoke data');
+      });
+  });
+  app.get('/getDust2SmokeT', (req, res) => {
+    const collectionRef = db.collection('Smoke');
+    // Query the collection for documents where MapID is "Mirage" and SideID is "T"
+    const query = collectionRef.where('MapID', '==', 'Dust2').where('SideID', '==', 'T');
+    // Execute the query and retrieve the Name and videoURL fields
+    query
+      .get()
+      .then((querySnapshot) => {
+        const smokeData = [];
+        querySnapshot.forEach((doc) => {
+          const data = doc.data();
+          const name = data.Name;
+          const videoURL = data.videoURL;
+          const description = data.Description;
+          smokeData.push({ name, videoURL,description });
+        });
+        res.json(smokeData); // Send the retrieved data as a JSON response
+      })
+      .catch((error) => {
+        console.error('Error getting documents: ', error);
+        res.status(500).send('Error getting smoke data');
+      });
+  });
+    /////////------------------------------------T side -------------------------------------------/>
+  //<-------------------------------------------CT side--------------------------------------->
+  app.get('/getDust2SmokeCT', (req, res) => {
+    const collectionRef = db.collection('Smoke');
+    // Query the collection for documents where MapID is "Mirage" and SideID is "T"
+    const query = collectionRef.where('MapID', '==', 'Dust2').where('SideID', '==', 'CT');
+    // Execute the query and retrieve the Name and videoURL fields
+    query
+      .get()
+      .then((querySnapshot) => {
+        const smokeData = [];
+        querySnapshot.forEach((doc) => {
+          const data = doc.data();
+          const name = data.Name;
+          const videoURL = data.videoURL;
+          const description = data.Description;
+          smokeData.push({ name, videoURL,description });
+        });
+        res.json(smokeData); // Send the retrieved data as a JSON response
+      })
+      .catch((error) => {
+        console.error('Error getting documents: ', error);
+        res.status(500).send('Error getting smoke data');
+      });
+  });
+  app.get('/getInfernoSmokeCT', (req, res) => {
+    const collectionRef = db.collection('Smoke');
+    // Query the collection for documents where MapID is "Mirage" and SideID is "T"
+    const query = collectionRef.where('MapID', '==', 'Inferno').where('SideID', '==', 'CT');
+    // Execute the query and retrieve the Name and videoURL fields
+    query
+      .get()
+      .then((querySnapshot) => {
+        const smokeData = [];
+        querySnapshot.forEach((doc) => {
+          const data = doc.data();
+          const name = data.Name;
+          const videoURL = data.videoURL;
+          const description = data.Description;
+          smokeData.push({ name, videoURL,description });
+        });
+        res.json(smokeData); // Send the retrieved data as a JSON response
+      })
+      .catch((error) => {
+        console.error('Error getting documents: ', error);
+        res.status(500).send('Error getting smoke data');
+      });
+  });
+  app.get('/getMirageSmokeCT', (req, res) => {
+    const collectionRef = db.collection('Smoke');
+    // Query the collection for documents where MapID is "Mirage" and SideID is "T"
+    const query = collectionRef.where('MapID', '==', 'Mirage').where('SideID', '==', 'CT');
+    // Execute the query and retrieve the Name and videoURL fields
+    query
+      .get()
+      .then((querySnapshot) => {
+        const smokeData = [];
+        querySnapshot.forEach((doc) => {
+          const data = doc.data();
+          const name = data.Name;
+          const videoURL = data.videoURL;
+          const description = data.Description;
+          smokeData.push({ name, videoURL,description });
+        });
+        res.json(smokeData); // Send the retrieved data as a JSON response
+      })
+      .catch((error) => {
+        console.error('Error getting documents: ', error);
+        res.status(500).send('Error getting smoke data');
+      });
+  });
+  //<-------------------------------------------CT side---------------------------------------/>
 
-  app.post('/add', async (req, res) => {
+
+
+
+
+ /////---------------------------------------GET FLASH-----------------------------------
+ //<--------------------------------------------T side -------------------------->
+ //Get flash Mirage
+ app.get('/getMirageFlashT', (req, res) => {
+  const collectionRef = db.collection('Flash');
+  // Query the collection for documents where MapID is "Mirage" and SideID is "T"
+  const query = collectionRef.where('MapID', '==', 'Mirage').where('SideID', '==', 'T');
+  // Execute the query and retrieve the Name and videoURL fields
+  query
+    .get()
+    .then((querySnapshot) => {
+      const smokeData = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const name = data.Name;
+        const videoURL = data.videoURL;
+        const description = data.Description;
+        smokeData.push({ name, videoURL,description });
+      });
+      res.json(smokeData); // Send the retrieved data as a JSON response
+    })
+    .catch((error) => {
+      console.error('Error getting documents: ', error);
+      res.status(500).send('Error getting smoke data');
+    });
+});
+//get flash inferno
+app.get('/getInfernoSmokeT', (req, res) => {
+  const collectionRef = db.collection('Flash');
+  // Query the collection for documents where MapID is "Mirage" and SideID is "T"
+  const query = collectionRef.where('MapID', '==', 'Inferno').where('SideID', '==', 'T');
+  // Execute the query and retrieve the Name and videoURL fields
+  query
+    .get()
+    .then((querySnapshot) => {
+      const smokeData = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const name = data.Name;
+        const videoURL = data.videoURL;
+        const description = data.Description;
+        smokeData.push({ name, videoURL,description });
+      });
+      res.json(smokeData); // Send the retrieved data as a JSON response
+    })
+    .catch((error) => {
+      console.error('Error getting documents: ', error);
+      res.status(500).send('Error getting smoke data');
+    });
+});
+//getDust2Flash
+ app.get('/getDust2FlashT', (req, res) => {
+  const collectionRef = db.collection('Flash');
+  // Query the collection for documents where MapID is "Mirage" and SideID is "T"
+  const query = collectionRef.where('MapID', '==', 'Dust2').where('SideID', '==', 'T');
+  // Execute the query and retrieve the Name and videoURL fields
+  query
+    .get()
+    .then((querySnapshot) => {
+      const smokeData = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const name = data.Name;
+        const videoURL = data.videoURL;
+        const description = data.Description;
+        smokeData.push({ name, videoURL,description });
+      });
+      res.json(smokeData); // Send the retrieved data as a JSON response
+    })
+    .catch((error) => {
+      console.error('Error getting documents: ', error);
+      res.status(500).send('Error getting smoke data');
+    });
+});
+ //<--------------------------------------------T side --------------------------/>
+
+
+
+
+
+//<----------------------------------------------Ct side -------------------------------->
+ //Get flash Mirage
+ app.get('/getMirageFlashCT', (req, res) => {
+  const collectionRef = db.collection('Flash');
+  // Query the collection for documents where MapID is "Mirage" and SideID is "T"
+  const query = collectionRef.where('MapID', '==', 'Mirage').where('SideID', '==', 'CT');
+  // Execute the query and retrieve the Name and videoURL fields
+  query
+    .get()
+    .then((querySnapshot) => {
+      const smokeData = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const name = data.Name;
+        const videoURL = data.videoURL;
+        const description = data.Description;
+        smokeData.push({ name, videoURL,description });
+      });
+      res.json(smokeData); // Send the retrieved data as a JSON response
+    })
+    .catch((error) => {
+      console.error('Error getting documents: ', error);
+      res.status(500).send('Error getting smoke data');
+    });
+});
+//get flash inferno
+app.get('/getInfernoSmokeCT', (req, res) => {
+  const collectionRef = db.collection('Flash');
+  // Query the collection for documents where MapID is "Mirage" and SideID is "T"
+  const query = collectionRef.where('MapID', '==', 'Inferno').where('SideID', '==', 'CT');
+  // Execute the query and retrieve the Name and videoURL fields
+  query
+    .get()
+    .then((querySnapshot) => {
+      const smokeData = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const name = data.Name;
+        const videoURL = data.videoURL;
+        const description = data.Description;
+        smokeData.push({ name, videoURL,description });
+      });
+      res.json(smokeData); // Send the retrieved data as a JSON response
+    })
+    .catch((error) => {
+      console.error('Error getting documents: ', error);
+      res.status(500).send('Error getting smoke data');
+    });
+});
+//getDust2Flash
+ app.get('/getDust2FlashCT', (req, res) => {
+  const collectionRef = db.collection('Flash');
+  // Query the collection for documents where MapID is "Mirage" and SideID is "T"
+  const query = collectionRef.where('MapID', '==', 'Dust2').where('SideID', '==', 'CT');
+  // Execute the query and retrieve the Name and videoURL fields
+  query
+    .get()
+    .then((querySnapshot) => {
+      const smokeData = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const name = data.Name;
+        const videoURL = data.videoURL;
+        const description = data.Description;
+        smokeData.push({ name, videoURL,description });
+      });
+      res.json(smokeData); // Send the retrieved data as a JSON response
+    })
+    .catch((error) => {
+      console.error('Error getting documents: ', error);
+      res.status(500).send('Error getting smoke data');
+    });
+});
+//<----------------------------------------------Ct side --------------------------------/>
+//Post method
+  app.post('/addsmoke', async (req, res) => {
     const { Description, ID,MapID,Name,SideID,videoURL } = req.body;
     try {
       const c = db.collection('Smoke').doc();
@@ -51,26 +356,55 @@ app.get("/getall", async (req, res) => {
       res.status(500).json(error.message);
     }
   });
-  app.get('/smokeData', (req, res) => {
-    const collectionRef = db.collection('Smoke');
-    // Query the collection for documents where MapID is "Mirage" and SideID is "T"
-    const query = collectionRef.where('MapID', '==', 'Mirage').where('SideID', '==', 'T');
-    // Execute the query and retrieve the Name and videoURL fields
-    query
-      .get()
-      .then((querySnapshot) => {
-        const smokeData = [];
-        querySnapshot.forEach((doc) => {
-          const data = doc.data();
-          const name = data.Name;
-          const videoURL = data.videoURL;
-          const description = data.Description;
-          smokeData.push({ name, videoURL,description });
-        });
-        res.json(smokeData); // Send the retrieved data as a JSON response
-      })
-      .catch((error) => {
-        console.error('Error getting documents: ', error);
-        res.status(500).send('Error getting smoke data');
+
+  app.post('/addflash', async (req, res) => {
+    const { Description, ID,MapID,Name,SideID,videoURL } = req.body;
+    try {
+      const c = db.collection('Flash').doc();
+      const item = {
+        
+        Description: Description,
+        ID:ID,
+        MapID:MapID,
+        Name:Name,
+        SideID:SideID,
+        videoURL:videoURL
+        
+      };
+      console.log('add done', item);
+      c.set(item);
+      res.status(200).send({
+        status: 'success',
+        message: 'item added successfully',
+        data: item,
       });
+    } catch (error) {
+      res.status(500).json(error.message);
+    }
+  });
+
+  app.post('/addmolly', async (req, res) => {
+    const { Description, ID,MapID,Name,SideID,videoURL } = req.body;
+    try {
+      const c = db.collection('Molly').doc();
+      const item = {
+        
+        Description: Description,
+        ID:ID,
+        MapID:MapID,
+        Name:Name,
+        SideID:SideID,
+        videoURL:videoURL
+        
+      };
+      console.log('add done', item);
+      c.set(item);
+      res.status(200).send({
+        status: 'success',
+        message: 'item added successfully',
+        data: item,
+      });
+    } catch (error) {
+      res.status(500).json(error.message);
+    }
   });
