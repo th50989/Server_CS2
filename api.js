@@ -438,7 +438,7 @@ app.get('/getInfernoSmokeT', (req, res) => {
     });
 });
 //get Molly inferno
-app.get('/getInfernoSmokeCT', (req, res) => {
+app.get('/getInfernoMollyCT', (req, res) => {
   const collectionRef = db.collection('Molly');
   // Query the collection for documents where MapID is "Mirage" and SideID is "T"
   const query = collectionRef.where('MapID', '==', 'Inferno').where('SideID', '==', 'CT');
